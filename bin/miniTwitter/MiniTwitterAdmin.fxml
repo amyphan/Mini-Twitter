@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane fx:id="frame" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="474.0" minWidth="591.0" prefHeight="474.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miniTwitter.adminController">
+   <children>
+      <TreeView fx:id="treeView" layoutX="8.0" layoutY="6.0" prefHeight="419.0" prefWidth="248.0" />
+      <TextArea fx:id="userIDText" layoutX="268.0" layoutY="6.0" prefHeight="64.0" prefWidth="194.0" promptText="User ID" />
+      <TextArea fx:id="groupIDText" layoutX="268.0" layoutY="78.0" prefHeight="64.0" prefWidth="194.0" promptText="Group ID" />
+      <Button fx:id="addUser" layoutX="500.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Add User" />
+      <Button fx:id="addGroup" layoutX="500.0" layoutY="98.0" mnemonicParsing="false" text="Add Group" />
+      <Button fx:id="openUserView" layoutX="265.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleOpenUserView" prefHeight="25.0" prefWidth="326.0" text="Open User View" />
+      <Button fx:id="showUserTotal" layoutX="264.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" text="Show User Total" />
+      <Button fx:id="showGroupTotal" layoutX="432.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Show Group Total" />
+      <Button fx:id="showMessageTotal" layoutX="264.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" text="Show Message Total" />
+      <Button fx:id="showPositivePercentage" layoutX="435.0" layoutY="347.0" mnemonicParsing="false" text="Show Positive Percentage" />
+   </children>
+</Pane>
