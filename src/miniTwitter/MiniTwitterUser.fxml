@@ -7,11 +7,11 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="392.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miniTwitter.userController">
    <children>
-      <TextArea layoutX="14.0" layoutY="14.0" prefHeight="55.0" prefWidth="170.0" promptText="User ID" text="userViewID" />
-      <Button fx:id="followUs" layoutX="258.0" layoutY="29.0" mnemonicParsing="false" text="Follow Us" />
+      <TextArea fx:id="userViewIDText" layoutX="14.0" layoutY="14.0" prefHeight="55.0" prefWidth="170.0" promptText="User ID" text="userViewID" />
+      <Button fx:id="followUs" layoutX="258.0" layoutY="29.0" mnemonicParsing="false" onAction="#handlefollowUs" text="Follow Us" />
       <ListView fx:id="currentFollowing" layoutX="14.0" layoutY="88.0" prefHeight="105.0" prefWidth="357.0" />
       <TextArea fx:id="tweetMessage" layoutX="14.0" layoutY="218.0" prefHeight="55.0" prefWidth="170.0" promptText="Tweet Message" />
-      <Button fx:id="postTweet" layoutX="258.0" layoutY="233.0" mnemonicParsing="false" text="Post Tweet" />
+      <Button fx:id="postTweet" layoutX="258.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleTweet" text="Post Tweet" />
       <ListView fx:id="newsFeed" layoutX="18.0" layoutY="301.0" prefHeight="105.0" prefWidth="357.0" />
    </children>
 </Pane>

@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -41,8 +43,14 @@ public class adminController
 	@FXML // fx:id = "groupIDText"
 	private TextArea groupIDText = new TextArea();
 	
-	TwitterService start = new TwitterService();
+	//Initiate Twitter Services
+	TwitterService service = TwitterService.getInstance();
 	
+	//Tree View
+	@FXML
+	private TreeView<String> treeView;
+	TreeItem<String> root = new TreeItem<String>("Root");
+
 	@FXML
 	private void handleOpenUserView(ActionEvent event)
 	{
@@ -62,7 +70,8 @@ public class adminController
 	private void handleAddUser(ActionEvent event)
 	{
 		String username = userIDText.getText();
-		start.createUser(username);
+		service.createUser(username);
+		this.makeBranch(username, root);
 		System.out.println(username);
 		
 	}
@@ -70,7 +79,8 @@ public class adminController
 	private void handleAddGroup(ActionEvent event)
 	{
 		String groupID = groupIDText.getText();
-		start.createGroup(groupID);
+		service.createGroup(groupID);
+		this.makeBranch(groupID, root);
 		System.out.println(groupID);
 	}
 	@FXML
@@ -83,7 +93,7 @@ public class adminController
 		popupwindow.setTitle("User Total");
 		      
 		      
-		Label label1= new Label("User Total: " + start.totalUsers());
+		Label label1= new Label("User Total: " + service.totalUsers());
 		      
 		     
 		Button button1= new Button("Close  window");
@@ -116,7 +126,7 @@ public class adminController
 		popupwindow.setTitle("Group Total");
 		      
 		      
-		Label label1= new Label("Group Total: " + start.totalGroups());
+		Label label1= new Label("Group Total: " + service.totalGroups());
 		      
 		     
 		Button button1= new Button("Close  window");
@@ -149,7 +159,7 @@ public class adminController
 		popupwindow.setTitle("Message Total");
 		      
 		      
-		Label label1= new Label("Message Total: " + start.totalMessages());
+		Label label1= new Label("Message Total: " + service.totalMessages());
 		      
 		     
 		Button button1= new Button("Close  window");
@@ -181,7 +191,7 @@ public class adminController
 		popupwindow.setTitle("Message Total");
 		      
 		      
-		Label label1= new Label("Percentage of Postive Messages: " + start.postiveMessagePercentage() + "% ");
+		Label label1= new Label("Percentage of Postive Messages: " + service.postiveMessagePercentage() + "% ");
 		      
 		     
 		Button button1= new Button("Close  window");
@@ -203,6 +213,13 @@ public class adminController
 		popupwindow.setScene(scene1);
 		      
 		popupwindow.showAndWait();
+	}
+	private TreeItem<String> makeBranch(String name, TreeItem<String> parent )
+	{
+		TreeItem<String> child = new TreeItem<>(name);
+		child.setExpanded(true);
+		parent.getChildren().add(child);
+		return child;
 	}
 	
 }

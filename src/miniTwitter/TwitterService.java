@@ -8,20 +8,23 @@ import javafx.scene.control.TreeView;
 
 public class TwitterService 
 {
-	private TreeItem<User> root = new TreeItem<User>();
-	private TreeView<User> treeView = new TreeView<User>(root);
+	private final static TwitterService service = new TwitterService();
+	private TreeItem<String> root;
 	private ArrayList<User> usersList = new ArrayList<User>();
 	private ArrayList<UserGroup> userGroupList = new ArrayList<UserGroup>();
 	public TwitterService()
 	{
-		
+		this.root = new TreeItem<String>();
+		root.setExpanded(true);
+	}
+	public static TwitterService getInstance()
+	{
+		return service;
 	}
 	public void createUser(String name)
 	{
 		User user = new User(name, this.generateID());
 		usersList.add(user);
-		TreeItem<User> userTree = new TreeItem<User>(user);
-		root.getChildren().add(userTree);
 	}
 	public void createGroup(String name)
 	{
@@ -31,6 +34,7 @@ public class TwitterService
 	public void followUser(User user, User isfollowing)
 	{
 		user.followingUser(isfollowing);
+		
 	}
 	public int totalUsers()
 	{
@@ -58,6 +62,18 @@ public class TwitterService
 		}
 		return (float)(((double)positiveTotal * 100) / (double)this.totalMessages());
 	}
+	public String findUserID(String user)
+	{
+		for(int ndx = 0; ndx < usersList.size(); ndx ++)
+		{
+			if(usersList.get(ndx).getUserName().equals(user))
+			{
+				return usersList.get(ndx).getUserID();
+			}
+		}
+		return "";
+	}
+	
 	private String generateID()
 	{
 		return UUID.randomUUID().toString();
