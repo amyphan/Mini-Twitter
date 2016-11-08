@@ -3,10 +3,14 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
@@ -37,6 +41,7 @@ public class adminController
 	@FXML // fx:id = "groupIDText"
 	private TextArea groupIDText = new TextArea();
 	
+	TwitterService start = new TwitterService();
 	
 	@FXML
 	private void handleOpenUserView(ActionEvent event)
@@ -57,6 +62,7 @@ public class adminController
 	private void handleAddUser(ActionEvent event)
 	{
 		String username = userIDText.getText();
+		start.createUser(username);
 		System.out.println(username);
 		
 	}
@@ -64,23 +70,139 @@ public class adminController
 	private void handleAddGroup(ActionEvent event)
 	{
 		String groupID = groupIDText.getText();
+		start.createGroup(groupID);
 		System.out.println(groupID);
 	}
 	@FXML
 	private void handleShowUserTotal(ActionEvent event)
 	{
+		
+		Stage popupwindow=new Stage();
+	      
+		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		popupwindow.setTitle("User Total");
+		      
+		      
+		Label label1= new Label("User Total: " + start.totalUsers());
+		      
+		     
+		Button button1= new Button("Close  window");
+		     
+		     
+		button1.setOnAction(e -> popupwindow.close());
+		     
+		     
+
+		VBox layout= new VBox(10);
+		     
+		      
+		layout.getChildren().addAll(label1, button1);
+		      
+		layout.setAlignment(Pos.CENTER);
+		      
+		Scene scene1= new Scene(layout, 200, 150);
+		      
+		popupwindow.setScene(scene1);
+		      
+		popupwindow.showAndWait();
 	}
 	@FXML
 	private void handleShowGroupTotal(ActionEvent event)
 	{
+		
+		Stage popupwindow=new Stage();
+	      
+		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		popupwindow.setTitle("Group Total");
+		      
+		      
+		Label label1= new Label("Group Total: " + start.totalGroups());
+		      
+		     
+		Button button1= new Button("Close  window");
+		     
+		     
+		button1.setOnAction(e -> popupwindow.close());
+		     
+		     
+
+		VBox layout= new VBox(10);
+		     
+		      
+		layout.getChildren().addAll(label1, button1);
+		      
+		layout.setAlignment(Pos.CENTER);
+		      
+		Scene scene1= new Scene(layout, 200, 150);
+		      
+		popupwindow.setScene(scene1);
+		      
+		popupwindow.showAndWait();
 	}
 	@FXML
 	private void handleShowMessageTotal(ActionEvent event)
 	{
+		
+		Stage popupwindow=new Stage();
+	      
+		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		popupwindow.setTitle("Message Total");
+		      
+		      
+		Label label1= new Label("Message Total: " + start.totalMessages());
+		      
+		     
+		Button button1= new Button("Close  window");
+		     
+		     
+		button1.setOnAction(e -> popupwindow.close());
+		     
+		     
+
+		VBox layout= new VBox(10);
+		     
+		      
+		layout.getChildren().addAll(label1, button1);
+		      
+		layout.setAlignment(Pos.CENTER);
+		      
+		Scene scene1= new Scene(layout, 200, 150);
+		      
+		popupwindow.setScene(scene1);
+		      
+		popupwindow.showAndWait();
 	}
 	@FXML
 	private void handleShowPositivePercentage(ActionEvent event)
 	{
+		Stage popupwindow=new Stage();
+	      
+		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		popupwindow.setTitle("Message Total");
+		      
+		      
+		Label label1= new Label("Percentage of Postive Messages: " + start.postiveMessagePercentage() + "% ");
+		      
+		     
+		Button button1= new Button("Close  window");
+		     
+		     
+		button1.setOnAction(e -> popupwindow.close());
+		     
+		     
+
+		VBox layout= new VBox(10);
+		     
+		      
+		layout.getChildren().addAll(label1, button1);
+		      
+		layout.setAlignment(Pos.CENTER);
+		      
+		Scene scene1= new Scene(layout, 200, 150);
+		      
+		popupwindow.setScene(scene1);
+		      
+		popupwindow.showAndWait();
 	}
 	
 }

@@ -44,5 +44,17 @@ public class User extends UserGroup
 	{
 		this.userName = name;
 	}
+	public int userMessageTotal()
+	{
+		return this.userNewsFeed.getNewsFeedSize();
+	}
+	public int postiveMessageTotal()
+	{
+		return this.userNewsFeed.numOfPositives();
+	}
+	public String toString()
+	{
+		return "Username: " + this.getUserName() + "\nID: " + this.getUserID(); 
+	}
 	
 }
